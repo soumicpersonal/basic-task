@@ -1,10 +1,37 @@
-# Vercel ignore file
+# Dependencies
 node_modules
+.pnp
+.pnp.js
+
+# Git & Logs
 .git
 *.log
-.env.local
-src/server/standalone-server.ts
-src/server/simple-server.ts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database
 database.sqlite
+
+# Modelence specific
 .modelence
-dist-server
+
+# Testing
+coverage
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
