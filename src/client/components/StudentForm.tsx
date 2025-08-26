@@ -112,27 +112,28 @@ const StudentForm: React.FC<StudentFormProps> = ({ onStudentAdded }) => {
   };
 
   const getInputClassName = (field: keyof CreateStudentRequest) => {
-    const baseClasses = "w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors";
+    const baseClasses = "w-full px-4 py-3 sm:py-4 bg-gray-900/50 border rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 text-white placeholder-gray-400 backdrop-blur-sm";
     const hasError = touched[field] && errors[field];
     
     if (hasError) {
-      return `${baseClasses} border-red-500 focus:ring-red-500`;
+      return `${baseClasses} border-red-500/50 focus:ring-red-500/50 focus:border-red-400`;
     }
     
-    return `${baseClasses} border-gray-300 focus:ring-blue-500 focus:border-blue-500`;
+    return `${baseClasses} border-gray-600/50 focus:ring-blue-500/50 focus:border-blue-400 hover:border-gray-500/70`;
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-        Student Registration
-      </h2>
-      
-      <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+    <div className="w-full">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6" noValidate>
         {/* Name Field */}
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-            Full Name *
+        <div className="group">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2 group-focus-within:text-blue-400 transition-colors">
+            <span className="flex items-center">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              Full Name *
+            </span>
           </label>
           <input
             type="text"
@@ -146,16 +147,24 @@ const StudentForm: React.FC<StudentFormProps> = ({ onStudentAdded }) => {
             disabled={isSubmitting}
           />
           {touched.name && errors.name && (
-            <p id="name-error" className="mt-1 text-sm text-red-600" role="alert">
+            <p id="name-error" className="mt-2 text-sm text-red-400 flex items-center" role="alert">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
               {errors.name}
             </p>
           )}
         </div>
 
         {/* Email Field */}
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-            Email Address *
+        <div className="group">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2 group-focus-within:text-blue-400 transition-colors">
+            <span className="flex items-center">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+              </svg>
+              Email Address *
+            </span>
           </label>
           <input
             type="email"
@@ -169,16 +178,24 @@ const StudentForm: React.FC<StudentFormProps> = ({ onStudentAdded }) => {
             disabled={isSubmitting}
           />
           {touched.email && errors.email && (
-            <p id="email-error" className="mt-1 text-sm text-red-600" role="alert">
+            <p id="email-error" className="mt-2 text-sm text-red-400 flex items-center" role="alert">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
               {errors.email}
             </p>
           )}
         </div>
 
         {/* Course Field */}
-        <div>
-          <label htmlFor="course" className="block text-sm font-medium text-gray-700 mb-1">
-            Course *
+        <div className="group">
+          <label htmlFor="course" className="block text-sm font-medium text-gray-300 mb-2 group-focus-within:text-blue-400 transition-colors">
+            <span className="flex items-center">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              Course *
+            </span>
           </label>
           <input
             type="text"
@@ -192,16 +209,24 @@ const StudentForm: React.FC<StudentFormProps> = ({ onStudentAdded }) => {
             disabled={isSubmitting}
           />
           {touched.course && errors.course && (
-            <p id="course-error" className="mt-1 text-sm text-red-600" role="alert">
+            <p id="course-error" className="mt-2 text-sm text-red-400 flex items-center" role="alert">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
               {errors.course}
             </p>
           )}
         </div>
 
         {/* Date of Birth Field */}
-        <div>
-          <label htmlFor="date_of_birth" className="block text-sm font-medium text-gray-700 mb-1">
-            Date of Birth *
+        <div className="group">
+          <label htmlFor="date_of_birth" className="block text-sm font-medium text-gray-300 mb-2 group-focus-within:text-blue-400 transition-colors">
+            <span className="flex items-center">
+              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Date of Birth *
+            </span>
           </label>
           <input
             type="date"
@@ -214,7 +239,10 @@ const StudentForm: React.FC<StudentFormProps> = ({ onStudentAdded }) => {
             disabled={isSubmitting}
           />
           {touched.date_of_birth && errors.date_of_birth && (
-            <p id="dob-error" className="mt-1 text-sm text-red-600" role="alert">
+            <p id="dob-error" className="mt-2 text-sm text-red-400 flex items-center" role="alert">
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
               {errors.date_of_birth}
             </p>
           )}
@@ -224,7 +252,7 @@ const StudentForm: React.FC<StudentFormProps> = ({ onStudentAdded }) => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
+          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 sm:py-4 px-6 rounded-xl hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center font-medium shadow-lg hover:shadow-blue-500/25 transform hover:scale-[1.02] active:scale-[0.98]"
         >
           {isSubmitting ? (
             <>
@@ -232,7 +260,12 @@ const StudentForm: React.FC<StudentFormProps> = ({ onStudentAdded }) => {
               <span className="ml-2">Registering...</span>
             </>
           ) : (
-            'Register Student'
+            <>
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              Register Student
+            </>
           )}
         </button>
       </form>
