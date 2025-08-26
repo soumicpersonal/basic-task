@@ -4,12 +4,15 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "build": "modelence build",
+    "build": "npm run build:client",
+    "build:client": "vite build --outDir dist",
+    "build:server": "tsc src/server/**/*.ts --outDir dist-server",
     "start": "node .modelence/build/app.mjs",
     "dev": "modelence dev",
     "dev:frontend": "modelence dev",
     "dev:backend": "tsx watch src/server/simple-server.ts",
     "dev:both": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "preview": "vite preview --outDir dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -34,6 +37,7 @@
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "@types/sqlite3": "^3.1.11",
+    "@vitejs/plugin-react": "^5.0.1",
     "autoprefixer": "^10.4.17",
     "concurrently": "^9.2.1",
     "postcss": "^8.4.35",

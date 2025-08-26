@@ -1,6 +1,8 @@
 import { Student, CreateStudentRequest, ApiResponse } from '../types/student';
 
-const API_BASE_URL = 'http://localhost:4000/api';
+const API_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? '/api'  // Vercel will handle routing to serverless functions
+  : 'http://localhost:4000/api';
 
 class ApiService {
   private async fetchWithErrorHandling<T>(

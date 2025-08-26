@@ -1,0 +1,10 @@
+# Vercel ignore file
+node_modules
+.git
+*.log
+.env.local
+src/server/standalone-server.ts
+src/server/simple-server.ts
+database.sqlite
+.modelence
+dist-server
