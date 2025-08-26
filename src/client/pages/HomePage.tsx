@@ -14,9 +14,9 @@ export default function HomePage() {
     try {
       setLoading(true);
       setError('');
-      
+
       const response = await apiService.getAllStudents();
-      
+
       if (response.success && response.data) {
         setStudents(response.data);
       } else {
@@ -61,9 +61,9 @@ export default function HomePage() {
 
           {/* Students Table */}
           <div className="order-2 lg:order-2">
-            <StudentTable 
-              students={students} 
-              loading={loading} 
+            <StudentTable
+              students={students}
+              loading={loading}
               error={error}
             />
           </div>
