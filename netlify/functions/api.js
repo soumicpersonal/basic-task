@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // Health
-app.get("/api/health", (_req, res) => {
+app.get(["/api/health", "/.netlify/functions/api/health"], (_req, res) => {
   res.json({ status: "OK", message: "Server is running" });
 });
 
@@ -35,7 +35,7 @@ let students = [
   },
 ];
 
-app.get("/api/students", (req, res) => {
+app.get(["/api/students", "/.netlify/functions/api/students"], (req, res) => {
   if (req.query.id) {
     const student = students.find((s) => s.id === parseInt(req.query.id));
     if (!student) return res.status(404).json({ success: false, message: "Student not found" });
@@ -44,7 +44,7 @@ app.get("/api/students", (req, res) => {
   return res.json({ success: true, message: "Students fetched successfully", data: students });
 });
 
-app.post("/api/students", (req, res) => {
+app.post(["/api/students", "/.netlify/functions/api/students"], (req, res) => {
   const { name, email, course, date_of_birth } = req.body;
   const errors = [];
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -83,7 +83,7 @@ app.post("/api/students", (req, res) => {
 
 // Minimal internal endpoints required by Modelence client
 // Note: This is a lightweight stub sufficient for demo usage
-app.post("/api/_internal/method/_system.session.init", (_req, res) => {
+app.post(["/api/_internal/method/_system.session.init", "/.netlify/functions/api/_internal/method/_system.session.init"], (_req, res) => {
   const now = new Date();
   const expiresAt = new Date(now.getTime() + 1000 * 60 * 60);
   res.json({
@@ -96,7 +96,7 @@ app.post("/api/_internal/method/_system.session.init", (_req, res) => {
   });
 });
 
-app.post("/api/_internal/method/_system.session.heartbeat", (_req, res) => {
+app.post(["/api/_internal/method/_system.session.heartbeat", "/.netlify/functions/api/_internal/method/_system.session.heartbeat"], (_req, res) => {
   res.json({ data: { ok: true }, typeMap: {} });
 });
 
