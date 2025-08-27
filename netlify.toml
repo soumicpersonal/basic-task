@@ -4,3 +4,19 @@
 
 [functions]
   directory = "netlify/functions"
+
+# Route API requests to Netlify Functions and enable SPA fallback
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/_internal/*"
+  to = "/.netlify/functions/api/_internal/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
