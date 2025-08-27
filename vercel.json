@@ -1,5 +1,6 @@
 {
   "buildCommand": "npm run build",
+  "outputDirectory": ".modelence/build",
   "functions": {
     "api/students.js": {
       "maxDuration": 10
