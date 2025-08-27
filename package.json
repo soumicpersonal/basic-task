@@ -4,16 +4,14 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "build": "npm run build:client",
-    "build:client": "vite build --outDir dist",
+    "build": "vite build",
     "build:server": "tsc src/server/**/*.ts --outDir dist-server",
     "start": "node .modelence/build/app.mjs",
     "dev": "modelence dev",
     "dev:frontend": "modelence dev",
     "dev:backend": "tsx watch src/server/simple-server.ts",
     "dev:both": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "preview": "vite preview --outDir dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preview": "vite preview"
   },
   "dependencies": {
     "cors": "^2.8.5",
