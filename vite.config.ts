@@ -1,17 +1,17 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-  root: 'src/client',
+  root: "src/client",
   build: {
-    outDir: 'dist', // output inside src/client/dist
+    outDir: "dist", // builds to src/client/dist
     emptyOutDir: true,
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src/client'),
+      "@": path.resolve(__dirname, "src/client"),
     },
   },
   server: {

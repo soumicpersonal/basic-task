@@ -1,7 +1,7 @@
 import { Student, CreateStudentRequest, ApiResponse } from '../types/student';
 
 const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? '/api'  // Vercel will handle routing to serverless functions
+  ?'/.netlify/functions/api'   // ✅ Netlify serverless function path
   : 'http://localhost:4000/api';
 
 class ApiService {
