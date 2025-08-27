@@ -46,10 +46,10 @@ export default function HomePage() {
         {/* Header */}
         <div className="text-center mb-6 sm:mb-8 lg:mb-12">
           <div className="relative">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent mb-3 sm:mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 z-10">
               Student Registration System
             </h1>
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 rounded-lg blur opacity-20"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 rounded-lg blur opacity-20 "></div>
           </div>
           <p className="text-base sm:text-lg text-gray-300 mt-2 max-w-2xl mx-auto px-4">
             Register new students and view all registered students with our modern management system
